@@ -15,7 +15,9 @@ function App() {
        <div>price:{price}</div>
        <div>qty: {qty}</div>
        <div>total:{qty * price}</div>
+       <div className='Button-size'>
        <button onClick={onClick}>Increment</button>
+       </div>
       </header>
     </div>
   );
