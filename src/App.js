@@ -1,22 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const price = 50;
+  const [qty,setQty] = useState(1)
+
+  const onClick = () => {
+    setQty (qty +1)
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+       <div>price:{price}</div>
+       <div>qty: {qty}</div>
+       <div>total:{qty * price}</div>
+       <button onClick={onClick}>Increment</button>
       </header>
     </div>
   );
