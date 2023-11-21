@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import { useState } from 'react';
-import './App.css';
+// import './App.css';
 
 function App() {
   const price = 50;
   const [qty,setQty] = useState(1)
-  useEffect(() => {
-
-  },[])
-
   const onClick = () => {
     setQty (qty + 1)
   }
@@ -24,7 +20,7 @@ function App() {
       <div>qty: {qty}</div>
       <div>total: {qty * price}</div><br/>
        <button onClick={onClick}>Increment</button><br/>
-     
+       <button onClick={()=> setQty(qty - 1)}>Decerement</button>
       </header>
     </div>
   );
