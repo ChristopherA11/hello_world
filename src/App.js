@@ -3,6 +3,8 @@ import Header from './Header'
 import Content from './Content'
 import Footer from './Footer'
 
+
+
 const App = () => {
     return (
       <div>
@@ -13,4 +15,4 @@ const App = () => {
     )
   }
 
-export default App
+export default App;
