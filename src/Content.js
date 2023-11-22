@@ -9,7 +9,7 @@ const Content = () => {
 
   return (
     <div>Content
-    <div>let's {change} money</div>
+    <div>let's {change()} money</div>
     </div>
   )
 }
