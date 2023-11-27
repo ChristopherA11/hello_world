@@ -12,7 +12,7 @@ const Content = () => {
       console.log(`${name}`);
     }
       const onClicked = (e) => {
-      console.log(e.target.innerHTML);
+      console.log(e.target);
     }
  
   return (

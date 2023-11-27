@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FaRegTrashAlt } from "react-icons/fa";
+import _ from 'lodash';
 
 const List = () => {
     const routine = [
@@ -21,14 +22,14 @@ const List = () => {
   return (
       <main>
        <ul>
-           {itemss.map((item) => (
+           {_.map(itemss,(item) => (
               <li className='item' key = {item.id}>
                 <input 
                   type="checkbox"
                   onChange={() => handelCheck(item.id)}
                   checked ={item.checked}
                  />
-                 <label onDoubleClick={() => handelCheck(item.id)}>
+                 <label>
                    {item.item}
                  </label>
                  <FaRegTrashAlt 
@@ -37,7 +38,7 @@ const List = () => {
                    tabIndex="0"
                  />
               </li> 
-           ))}
+  ))}
      </ul>
      </main>
   )

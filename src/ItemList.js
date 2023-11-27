@@ -1,20 +1,19 @@
 import React from 'react'
-
-import LineItem from './LineItem';
+import ListItem from './ListItem'
+import _ from 'lodash'
 
 const ItemList = ({dailRoutine,handelChange,onClicked}) => {
   return (
-    
     <ul>
-    {dailRoutine.map((item) => (
-        <LineItem 
-          item = {item}
-        //   key = {item.id}
-          handelChange={handelChange}
-          onClicked={onClicked}
-          />
+    {_.map(dailRoutine,(item) => (
+    <ListItem
+        item={item} 
+        key = {item.id}
+        handelChange={handelChange}
+        onClicked={onClicked}
+        />
 ))}
- </ul>
+</ul>
   )
 }
 
