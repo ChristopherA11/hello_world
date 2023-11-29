@@ -7,16 +7,16 @@ import AddList from './AddList'
 // import List from './List'
 import { useState } from 'react'
 import AddItem from './AddItem'
-import ListItem from './ListItem'
+// import ListItem from './ListItem'
 import SearchItem from './SearchItem'
 
 const App = () => {
-  const routine = [
-    {id:0, checked: true, item: "play"},
-    {id:1, checked: true, item: "travel"},
-    {id:2, checked: false, item: "read"},
-]
-   const [dailRoutine,setDailRoutine] = useState(routine)
+//   const routine = [
+//     {id:0, checked: true, item: "play"},
+//     {id:1, checked: true, item: "travel"},
+//     {id:2, checked: false, item: "read"},
+// ]
+   const [dailRoutine,setDailRoutine] = useState(JSON.parse(localStorage.getItem("todo_list") ))
    const [newItem, setNewItem] = useState("")
    const [search, setSearch] = useState("")
 
@@ -29,7 +29,7 @@ const App = () => {
       const addNewItem = {id,checked:false,item}
       const listItem = [...dailRoutine,addNewItem]
       setDailRoutine(listItem)
-      localStorage.setItem("todo_list",JSON.stringify(ListItem))
+      localStorage.setItem("todo_list",JSON.stringify(listItem))
    }
 
    const handelChange = (id) => {

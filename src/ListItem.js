@@ -7,7 +7,7 @@ const ListItem = ({item,handelChange,onClicked}) => {
     <input 
       type="checkbox"
       onChange={() => handelChange(item.id)}
-      checked ={item.checked}
+      checked={item.checked}
      />
      <label style={item.checked ? {textDecoration:"line-through"}:null}>
        {item.item}
