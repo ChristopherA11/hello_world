@@ -6,7 +6,7 @@ import _ from 'lodash'
 const AddList = ({dailRoutine,handelChange,onClicked}) => {
   
   return (
-    <main>
+    <>
     {!_.isEmpty(dailRoutine) ? (
        <ItemList
        dailRoutine={dailRoutine}
@@ -16,7 +16,7 @@ const AddList = ({dailRoutine,handelChange,onClicked}) => {
   ): (
       <p>List Items Empty</p>
     )}
-  </main>
+  </>
   )
 }
 

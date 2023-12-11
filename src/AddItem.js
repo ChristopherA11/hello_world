@@ -1,9 +1,10 @@
 import React from 'react'
-import { FaPlus } from "react-icons/fa";
+// import { FaPlus } from "react-icons/fa";
 import { useRef } from 'react';
 
 const AddItem = ({newItem,setNewItem,handelSubmit}) => {
   const inputRef = useRef()
+  
  
   return (
     <form className='addForm' onSubmit={handelSubmit} >
@@ -23,7 +24,7 @@ const AddItem = ({newItem,setNewItem,handelSubmit}) => {
                 tabIndex="0"
                 onClick={() => inputRef.current.focus()}
             >
-                <FaPlus />
+                add
             </button>
     </form>
   )

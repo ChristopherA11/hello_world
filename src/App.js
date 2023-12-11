@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react'
+import React, {  useEffect, useState } from 'react'
 import Header from './Header'
 // import Content from './Content'
 import Footer from './Footer'
 import AddList from './AddList'
 // import Counter from './components/Counter'
 // import List from './List'
-import { useState } from 'react'
 import AddItem from './AddItem'
-// import ListItem from './ListItem'
 import SearchItem from './SearchItem'
+// import CounterOne from './components/CounterOne'
+
 
 const App = () => {
 //   const routine = [
@@ -16,12 +16,37 @@ const App = () => {
 //     {id:1, checked: true, item: "travel"},
 //     {id:2, checked: false, item: "read"},
 // ]
-   const [dailRoutine,setDailRoutine] = useState(JSON.parse(localStorage.getItem("todo_list") ))
+   const API_URL = " http://localhost:3500/routine"
+   const [dailRoutine,setDailRoutine] = useState([])
    const [newItem, setNewItem] = useState("")
    const [search, setSearch] = useState("")
+   const [error,setError] = useState(null)
+   const [loading, setLoading] = useState(true)
+   
 
-   useEffect(()=>{
-      console.log("render");
+   useEffect(() => {
+      const fetchItems = async() =>{
+         try{
+           const response = await fetch(API_URL)
+           if (!response.ok) {
+            throw Error("data not found")
+           }
+           const listItems = await response.json();
+           console.log(listItems);
+           setDailRoutine(listItems)
+           setError(null)
+         }
+         catch (err){
+            setError(err.message);
+         }
+         finally {
+            setLoading(false)
+         }
+         }
+      //    setTimeout(()=>{
+      //       (async () => await fetchItems())()
+      // },1000)
+    (async () => await fetchItems())()
    },[])
 
    const addItem = (item) => {
@@ -29,18 +54,18 @@ const App = () => {
       const addNewItem = {id,checked:false,item}
       const listItem = [...dailRoutine,addNewItem]
       setDailRoutine(listItem)
-      localStorage.setItem("todo_list",JSON.stringify(listItem))
+      // localStorage.setItem("todo_list",JSON.stringify(listItem))
    }
 
    const handelChange = (id) => {
       const dailyRoutine = dailRoutine.map((val) => val.id === id ? {...val,checked:!val.checked} : val)
       setDailRoutine(dailyRoutine)
-      localStorage.setItem("todo_list",JSON.stringify(dailyRoutine))
+      // localStorage.setItem("todo_list",JSON.stringify(dailyRoutine))
 }
    const onClicked =(id) => {
       const dailyRoutine = dailRoutine.filter((val) => val.id !== id)
       setDailRoutine(dailyRoutine)
-      localStorage.setItem("todo_list",JSON.stringify(dailyRoutine))
+      // localStorage.setItem("todo_list",JSON.stringify(dailyRoutine))
 }
 const handelSubmit =(e) => {
   e.preventDefault()
@@ -57,19 +82,21 @@ const handelSubmit =(e) => {
             setNewItem={setNewItem}
             handelSubmit={handelSubmit}
          />
-         <SearchItem 
-         search={search}
-         setSearch={setSearch}/>
-         {/*<Content />*/}
-          {/*<Counter />*/}
+         {/* <CounterOne /> */}
+         {/* <Content /> */}
+          {/* <Counter /> */}
           {/*<List/>*/}
-          <AddList
-            dailRoutine={dailRoutine.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))}
-            handelChange={handelChange}
-            onClicked={onClicked}
-          />
-         
-         <Footer
+            <SearchItem search={search} setSearch={setSearch} />
+            <main>
+               {loading && <p> loading Data...</p>}
+               {error && <p>{`error:${error}`}</p>}
+               {!loading && !error && <AddList
+                  dailRoutine={dailRoutine.filter(item => (item.item).toLowerCase().includes(search.toLowerCase()))}
+                  handelChange={handelChange}
+                  onClicked={onClicked}
+               />}
+            </main>
+             <Footer
             length={dailRoutine.length}
          />
       </div>
