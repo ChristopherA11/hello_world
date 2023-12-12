@@ -1,25 +1,24 @@
 {
-
-"routine" : [
+  "routine": [
     {
-        "id":0, 
-        "checked": true, 
-        "item": "play"
-},
-    {
-        "id":1, 
-        "checked": true, 
-        "item": "travel"
-},
-    {
-        "id":2,
-        "checked": false,
-        "item": "read"
+      "id": 1,
+      "checked": false,
+      "item": "travel"
     },
     {
-        "id":3,
-        "checked":false,
-        "item":"sleep"
+      "id": 2,
+      "checked": true,
+      "item": "read"
+    },
+    {
+      "id": 3,
+      "checked": false,
+      "item": "sleep"
+    },
+    {
+      "id": 4,
+      "checked": false,
+      "item": "Earn Money"
     }
-]
+  ]
 }
